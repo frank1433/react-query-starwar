@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+/**
+ * @Author: frank zhang
+ * @Date:   2022-07-31 20:48:28
+ * @Last Modified by:   frank zhang
+ * @Last Modified time: 2022-07-31 21:14:30
+ */
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import People from "./components/People";
+import Planets from "./components/Planets";
 function App() {
+  const [page, setPage] = useState("planets");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Star Wars Info</h1>
+      <Navbar setPage={setPage}/>
+      <div className='content'>
+        {page === "planets" ? <Planets /> : <People />}
+      </div>
     </div>
   );
 }
